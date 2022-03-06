@@ -1,7 +1,10 @@
 <template>
-  <h1 v-if="process.id">Process: {{ process.attributes.title }}</h1>
+  <div v-if="process.id">
+    <h1>{{ process.attributes.title }}</h1>
+    <p>{{ process.attributes.context }}</p>
+  </div>
   <h1 v-else-if="error">{{ error }}</h1>
-  <h1 v-else class="text-slate-500">Loading...</h1>
+  <h1 v-else class="hidden">Loading...</h1>
 </template>
 
 <script>
