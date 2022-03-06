@@ -19,7 +19,7 @@ export default {
   async mounted() {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/processes?populate=*"
+        'http://localhost:1337/api/processes?populate=*'
       );
       this.processes = response.data.data;
       console.log(this.processes);
