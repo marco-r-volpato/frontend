@@ -2,7 +2,9 @@
   <div v-if="processes">
     <h1 v-for="process in processes" :key="process.id">
       <router-link :to="{ name: 'Process', params: { id: process.id } }">
-        {{ process.attributes.title }}
+        <h1>{{ process.attributes.title }}</h1>
+        <p>{{ process.attributes.context }}</p>
+        <br>
       </router-link>
     </h1>
   </div>
@@ -17,7 +19,7 @@ export default {
   async mounted() {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/processes?fields=title"
+        "http://localhost:1337/api/processes?populate=*"
       );
       this.processes = response.data.data;
       console.log(this.processes);
