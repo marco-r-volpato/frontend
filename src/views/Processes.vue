@@ -3,7 +3,7 @@
     <h1 v-for="process in processes" :key="process.id">
       <router-link :to="{ name: 'Process', params: { id: process.id } }">
         <h1>{{ process.attributes.title }}</h1>
-        <p>{{ process.attributes.context }}</p>
+        <p>{{ process.attributes.description }}</p>
         <br>
       </router-link>
     </h1>

@@ -2,6 +2,7 @@
   <div v-if="process.id">
     <h1>{{ process.attributes.title }}</h1>
     <p>{{ process.attributes.description }}</p>
+    <p>{{process.attributes.videoUrl}}</p>
     <br />
     <ul>
       <li v-for="step in process.attributes.steps" :key="step.id">
