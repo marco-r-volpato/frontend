@@ -1,13 +1,17 @@
 <template>
   <div v-if="process.id">
     <h1>{{ process.attributes.title }}</h1>
-    <p>{{ process.attributes.context }}</p>
+    <p>{{ process.attributes.description }}</p>
     <br />
     <ul>
       <li v-for="step in process.attributes.steps" :key="step.id">
         <h2>{{ step.title }}</h2>
-        <p>{{ step.explanation }}</p>
-        <img v-if="step.image.data" :src="('http://localhost:1337' + step.image.data.attributes.url)">
+        <p>{{ step.description }}</p>
+        <div v-if="step.images.data">
+          <div v-for="image in step.images.data" :key="image.id">
+             <img :src="('http://localhost:1337' + image.attributes.url)" alt="">
+          </div>
+        </div>
         <br />
       </li>
     </ul>
@@ -25,7 +29,7 @@ export default {
       const response = await axios.get(
         'http://localhost:1337/api/processes/' +
           this.$route.params.id +
-          '?populate=steps.image'
+          '?populate=steps.images'
       );
       this.process = response.data.data;
       console.log(this.process);
