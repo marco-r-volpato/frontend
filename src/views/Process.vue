@@ -9,7 +9,7 @@
         <p>{{ step.description }}</p>
         <div v-if="step.images.data">
           <div v-for="image in step.images.data" :key="image.id">
-             <img :src="('http://localhost:1337' + image.attributes.url)" alt="">
+            <img :src="('http://localhost:1337' + image.attributes.formats.thumbnail.url)" alt="">
           </div>
         </div>
         <br />
@@ -27,9 +27,9 @@ export default {
   async mounted() {
     try {
       const response = await axios.get(
-        'http://localhost:1337/api/processes/' +
+        "http://localhost:1337/api/processes/" +
           this.$route.params.id +
-          '?populate=steps.images'
+          "?populate=steps.images"
       );
       this.process = response.data.data;
       console.log(this.process);
