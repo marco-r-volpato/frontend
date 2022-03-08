@@ -1,4 +1,6 @@
 <template>
+  <input v-model="query" type="text">
+  <p>Searching for: {{query}}</p>
   <div v-if="processes">
     <h1 v-for="process in processes" :key="process.id">
       <router-link :to="{ name: 'Process', params: { id: process.id } }">
@@ -14,6 +16,9 @@
 
 <script>
 import axios from "axios";
+import {ref} from 'vue';
+
+const query = ref(null)
 
 export default {
   async mounted() {
@@ -31,6 +36,7 @@ export default {
     return {
       processes: [],
       error: null,
+      query
     };
   },
 };
