@@ -2,7 +2,7 @@
   <div v-if="process.id">
     <h1>{{ process.attributes.title }}</h1>
     <p>{{ process.attributes.description }}</p>
-    <p>{{process.attributes.videoUrl}}</p>
+    <p>{{ process.attributes.videoUrl }}</p>
     <br />
     <ul>
       <li v-for="step in process.attributes.steps" :key="step.id">
@@ -10,7 +10,12 @@
         <p>{{ step.description }}</p>
         <div v-if="step.images.data">
           <div v-for="image in step.images.data" :key="image.id">
-            <img :src="('http://localhost:1337' + image.attributes.formats.thumbnail.url)" alt="">
+            <img
+              :src="
+                'http://localhost:1337' + image.attributes.formats.thumbnail.url
+              "
+              alt=""
+            />
           </div>
         </div>
         <br />
